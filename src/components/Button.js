@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import { fetchUsers } from '../redux/user/userActions';
 
 const StyledButton = styled.button`
     background-color: #e4bb7a;
@@ -15,8 +17,14 @@ const StyledButton = styled.button`
     }
 `;
 
-const Button = ({ children }) => (
-    <StyledButton>{children}</StyledButton>
+const Button = ({ children, fetchUsersFn }) => (
+    <StyledButton onClick={fetchUsersFn}>{children}</StyledButton>
 );
 
-export default Button;
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchUsersFn: dispatch(fetchUsers())
+    }
+}
+
+export default connect(null, mapDispatchToProps)(Button);

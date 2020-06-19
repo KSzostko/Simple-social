@@ -1,11 +1,15 @@
 import React from 'react';
-import Button from './components/Button';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import UsercContainer from './components/UsersContainer';
 
 function App() {
     return (
-        <div className="App">
-            <Button>Details</Button>
-        </div>
+        <Provider store={store}>
+            <div className="App">
+                <UsercContainer />
+            </div>
+        </Provider>
     );
 }
 
