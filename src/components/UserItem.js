@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import Button from './Button';
 
 const StyledListItem = styled.li`
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
     padding: 20px;
     border: 1px solid #000;
 `;
