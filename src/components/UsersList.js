@@ -26,16 +26,22 @@ function UsersList({ userData, fetchUsersFn }) {
     return (
         <StyledWrapper>
             {loading ? (
-                'Loading...'
+                <div class="lds-roller">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
             ) : error ? (
                 <p>{error}</p>
             ) : (
                 <StyledList>
                     {users.map((user) => (
-                        <UserItem
-                            key={user.id}
-                            data={user}
-                        />
+                        <UserItem key={user.id} data={user} />
                     ))}
                 </StyledList>
             )}
