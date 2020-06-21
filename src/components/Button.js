@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// TODO: change styles
 const StyledButton = styled.button`
     background-color: #e4bb7a;
     padding: 15px 40px;

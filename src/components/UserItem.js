@@ -1,6 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import Button from './Button';
 
 const StyledListItem = styled.li`
     display: grid;
@@ -19,8 +19,24 @@ const StyledInfoList = styled.ul`
     font-weight: ${props => props.contact ? 300 : 400};
 `;
 
+const StyledLink = styled(Link)`
+    background-color: #e4bb7a;
+    padding: 15px 40px;
+    font-size: 1.25rem;
+    color: #fff;
+    border-style: none;
+    cursor: pointer;
+    transition: 0.25s;
+    text-decoration: none;
+    text-align: center;
+
+    &:hover {
+        background-color: rgba(187, 144, 75, 0.9);
+    }
+`;
+
 const UserItem = ({ data }) => {
-    const { name, email, phone, website, company } = data;
+    const { id, name, email, phone, website, company } = data;
     
     return (
         <StyledListItem>
@@ -35,7 +51,7 @@ const UserItem = ({ data }) => {
                 <li>{company.catchPhrase}</li>
                 <li>{company.bs}</li>
             </StyledInfoList>
-            <Button>Details</Button>
+            <StyledLink to={`/user/${id}`}>Details</StyledLink>
         </StyledListItem>
     );
 };
