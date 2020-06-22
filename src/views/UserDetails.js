@@ -1,13 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import PostsList from '../components/PostsList';
 
 function UserDetails() {
     let { id } = useParams();
     
     return (
-        <div>
-            Hello user {id}
-        </div>
+        <PostsList userId={id} />
     );
 }
 

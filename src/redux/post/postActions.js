@@ -19,10 +19,10 @@ const fetchPostsFailure = error => ({
     payload: error,
 });
 
-export const fetchPosts = () => {
+export const fetchPosts = (id) => {
     return (dispatch) => {
         dispatch(fetchPostsRequest());
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
             .then(resp => {
                 const data = resp.data;
                 dispatch(fetchPostsSuccess(data));
