@@ -51,7 +51,7 @@ function UsersList({ userData, fetchUsersFn }) {
 
 const mapStateToProps = state => {
     return {
-        userData: state,
+        userData: state.user,
     };
 };
 
