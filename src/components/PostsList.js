@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../redux/post/postActions';
 import PostItem from './PostItem';
+
+const StyledList = styled.ul`
+    list-style: none;
+    padding-left: 0;
+`;
 
 function PostsList({ userId, postsData, fetchPostsFn }) {
     const { loading, posts, error } = postsData;
@@ -26,11 +32,11 @@ function PostsList({ userId, postsData, fetchPostsFn }) {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <ul>
+                <StyledList>
                     {posts.map((post) => (
                         <PostItem key={post.id} data={post} />
                     ))}
-                </ul>
+                </StyledList>
             )}
         </div>
     );

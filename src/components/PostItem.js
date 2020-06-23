@@ -2,9 +2,9 @@ import React from 'react';
 
 function PostItem({ data }) {
     return (
-        <div>
+        <li>
             {data.title}
-        </div>
+        </li>
     );
 }
 
