@@ -51,7 +51,16 @@ const UserItem = ({ data }) => {
                 <li>{company.catchPhrase}</li>
                 <li>{company.bs}</li>
             </StyledInfoList>
-            <StyledLink to={`/user/${id}`}>Details</StyledLink>
+            <StyledLink
+                to={{
+                    pathname: `/user/${id}`,
+                    state: {
+                        user: data,
+                    }
+                }}
+            >
+                Details
+            </StyledLink>
         </StyledListItem>
     );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../redux/post/postActions';
+import PostItem from './PostItem';
 
 function PostsList({ userId, postsData, fetchPostsFn }) {
     const { loading, posts, error } = postsData;
@@ -27,9 +28,7 @@ function PostsList({ userId, postsData, fetchPostsFn }) {
             ) : (
                 <ul>
                     {posts.map((post) => (
-                        <li key={post.id} data={post}>
-                            {post.title}
-                        </li>
+                        <PostItem key={post.id} data={post} />
                     ))}
                 </ul>
             )}
