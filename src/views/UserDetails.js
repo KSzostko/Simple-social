@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import PostsList from '../components/PostsList';
+import Button from '../components/Button';
 
 
 function UserDetails(props) {
@@ -9,7 +10,11 @@ function UserDetails(props) {
     
     return (
         <div>
-            hello {name}
+            <div>
+                <Button>Back</Button>
+                <h2>{name}</h2>
+                <Button round>+</Button>
+            </div>
             <PostsList userId={id} />
         </div>
     );
