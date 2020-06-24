@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 
 const StyledListItem = styled.li`
@@ -17,13 +18,23 @@ const StyledHeader = styled.h3`
     font-size: 1rem;
 `;
 
+const StyledIcon = styled.i`
+    color: #e4bb7a;
+    font-size: 2rem;
+`;
+
 function PostItem({ data }) {
     return (
         <StyledListItem>
-            {/* TODO: change buttons to links */}
-            <Button>Remove</Button>
+            <Button icon>
+                <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
+            </Button>
             <StyledHeader>{data.title}</StyledHeader>
-            <Button>details</Button>
+            <Link>
+                <StyledIcon
+                    className="fa fa-chevron-right"
+                    aria-hidden="true"></StyledIcon>
+            </Link>
         </StyledListItem>
     );
 }

@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 
 const StyledButton = styled.button`
-    background-color: #e4bb7a;
-    padding: ${props => props.round ? '0' : '7px 20px'};
+    background-color: ${props => props.icon ? '#fff': '#e4bb7a'};
+    padding: ${props => props.round || props.icon ? '0' : '7px 20px'};
     font-size: ${props => props.round ? '2.5rem' : '1rem'};
     font-weight: ${props => props.round ? 700 : 400};
     color: #fff;
@@ -18,9 +18,11 @@ const StyledButton = styled.button`
         align-items: center;
     `}
 
-    &:hover {
-        background-color: rgba(187, 144, 75, 0.9);
-    }
+    ${props => !props.icon && css`
+        &:hover {
+            background-color: rgba(187, 144, 75, 0.9);
+        }
+    `}
 `;
 
 export default StyledButton;
