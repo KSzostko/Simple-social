@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context';
 import Button from './Button';
 
 const StyledListItem = styled.li`
@@ -27,17 +28,27 @@ function PostItem({ data }) {
     const { userId, id, title } = data;
     
     return (
-        <StyledListItem>
-            <Button icon>
-                <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
-            </Button>
-            <StyledHeader>{title}</StyledHeader>
-            <Link to={`/user/${userId}/${id}`}>
-                <StyledIcon
-                    className="fa fa-chevron-right"
-                    aria-hidden="true"></StyledIcon>
-            </Link>
-        </StyledListItem>
+        <UserContext.Consumer>
+            {value => (
+                <StyledListItem>
+                    <Button icon>
+                        <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
+                    </Button>
+                    <StyledHeader>{title}</StyledHeader>
+                    <Link to={{
+                        pathname: `/user/${userId}/${id}`,
+                        state: {
+                            post: data,
+                            name: value,
+                        }
+                    }}>
+                        <StyledIcon
+                            className="fa fa-chevron-right"
+                            aria-hidden="true"></StyledIcon>
+                    </Link>
+                </StyledListItem>
+            )}
+        </UserContext.Consumer>
     );
 }
 

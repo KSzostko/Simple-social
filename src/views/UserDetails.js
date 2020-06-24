@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { UserContext } from '../context';
 import PostsList from '../components/PostsList';
 import Button from '../components/Button';
 
@@ -28,16 +29,18 @@ function UserDetails(props) {
     let { id } = useParams();
     
     return (
-        <StyledWrapper>
-            <DetailsHeader>
-                <Link to="/">
-                    <StyledIcon className="fa fa-arrow-left" aria-hidden="true"></StyledIcon>
-                </Link>
-                <h2>{name}</h2>
-                <Button round>+</Button>
-            </DetailsHeader>
-            <PostsList userId={id} />
-        </StyledWrapper>
+        <UserContext.Provider value={name}>
+            <StyledWrapper>
+                <DetailsHeader>
+                    <Link to="/">
+                        <StyledIcon className="fa fa-arrow-left" aria-hidden="true"></StyledIcon>
+                    </Link>
+                    <h2>{name}</h2>
+                    <Button round>+</Button>
+                </DetailsHeader>
+                <PostsList userId={id} />
+            </StyledWrapper>
+        </UserContext.Provider>
     );
 }
 
