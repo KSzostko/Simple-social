@@ -24,13 +24,15 @@ const StyledIcon = styled.i`
 `;
 
 function PostItem({ data }) {
+    const { userId, id, title } = data;
+    
     return (
         <StyledListItem>
             <Button icon>
                 <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
             </Button>
-            <StyledHeader>{data.title}</StyledHeader>
-            <Link>
+            <StyledHeader>{title}</StyledHeader>
+            <Link to={`/user/${userId}/${id}`}>
                 <StyledIcon
                     className="fa fa-chevron-right"
                     aria-hidden="true"></StyledIcon>
