@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import PostsList from '../components/PostsList';
 import Button from '../components/Button';
@@ -17,6 +18,11 @@ const DetailsHeader = styled.div`
     align-items: center;
 `;
 
+const StyledIcon = styled.i`
+    color: #e4bb7a;
+    font-size: 3rem;
+`;
+
 function UserDetails(props) {
     const { name } = props.location.state.user;
     let { id } = useParams();
@@ -24,8 +30,9 @@ function UserDetails(props) {
     return (
         <StyledWrapper>
             <DetailsHeader>
-                {/* TODO: change to arrow Link */}
-                <Button>Back</Button>
+                <Link to="/">
+                    <StyledIcon className="fa fa-arrow-left" aria-hidden="true"></StyledIcon>
+                </Link>
                 <h2>{name}</h2>
                 <Button round>+</Button>
             </DetailsHeader>
