@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
 import PostBody from '../components/PostBody';
+import Button from '../components/Button';
 
 const StyledWrapper = styled.div`
     max-width: 1200px;
@@ -16,6 +17,16 @@ const DetailsHeader = styled.div`
 const StyledIcon = styled.i`
     color: #e4bb7a;
     font-size: 3rem;
+`;
+
+const ButtonsWrapper = styled.div`
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+`;
+
+const StyledButton = styled(Button)`
+    border-radius: 5px;
 `;
 
 function PostDetails(props) {
@@ -41,6 +52,10 @@ function PostDetails(props) {
                 <h2>{name}</h2>
             </DetailsHeader>
             <PostBody title={title} body={body} />
+            <ButtonsWrapper>
+                <StyledButton>Show comments</StyledButton>
+                <StyledButton>Add comment</StyledButton>
+            </ButtonsWrapper>
         </StyledWrapper>
     );
 }
