@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
 import CommentsList from '../components/CommentsList';
@@ -34,6 +34,12 @@ const StyledButton = styled(Button)`
 function PostDetails(props) {
     const { name, post: { title, body } } = props.location.state;
     let { id, post } = useParams();
+
+    const [ commentsOpen, setCommentsOpen ] = useState(false);
+
+    const handleClick = () => {
+        setCommentsOpen(prevCommentsOpen => !prevCommentsOpen);
+    }
     
     return (
         <StyledWrapper>
@@ -55,10 +61,10 @@ function PostDetails(props) {
             </DetailsHeader>
             <PostBody title={title} body={body} />
             <ButtonsWrapper>
-                <StyledButton>Show comments</StyledButton>
-                <StyledButton>Add comment</StyledButton>
+                <StyledButton onClick={handleClick}>{commentsOpen ? 'Hide' : 'Show'} comments</StyledButton>
+                {commentsOpen && <StyledButton>Add comment</StyledButton>}
             </ButtonsWrapper>
-            <CommentsList postId={post} />
+            {commentsOpen && <CommentsList postId={post} />}
         </StyledWrapper>
     );
 }
