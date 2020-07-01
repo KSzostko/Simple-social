@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { fetchComments } from '../redux/comment/commentActions';
 import CommentItem from './CommentItem';
+import Loader from './Loader';
 
 const StyledList = styled.ul`
     list-style: none;
@@ -19,16 +20,7 @@ function CommentsList({ postId, commentsData, fetchCommentsFn }) {
     return (
         <div>
             {loading ? (
-                <div className="lds-roller">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <Loader />
             ) : error ? (
                 <p>{error}</p>
             ) : (

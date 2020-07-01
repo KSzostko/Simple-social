@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { fetchPosts } from '../redux/post/postActions';
 import PostItem from './PostItem';
+import Loader from './Loader';
 
 const StyledList = styled.ul`
     list-style: none;
@@ -19,16 +20,7 @@ function PostsList({ userId, postsData, fetchPostsFn }) {
     return (
         <div>
             {loading ? (
-                <div className="lds-roller">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <Loader />
             ) : error ? (
                 <p>{error}</p>
             ) : (

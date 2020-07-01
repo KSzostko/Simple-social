@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { fetchUsers } from '../redux/user/userActions';
 import UserItem from './UserItem';
+import Loader from './Loader';
 
 const StyledWrapper = styled.div`
     max-width: 1600px;
@@ -26,16 +27,7 @@ function UsersList({ userData, fetchUsersFn }) {
     return (
         <StyledWrapper>
             {loading ? (
-                <div className="lds-roller">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <Loader />
             ) : error ? (
                 <p>{error}</p>
             ) : (
