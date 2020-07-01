@@ -22,6 +22,7 @@ const StyledIcon = styled.i`
 
 const ButtonsWrapper = styled.div`
     margin-top: 40px;
+    margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
 `;

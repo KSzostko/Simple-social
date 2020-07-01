@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { fetchComments } from '../redux/comment/commentActions';
+import CommentItem from './CommentItem';
 
 const StyledList = styled.ul`
     list-style: none;
@@ -33,8 +34,7 @@ function CommentsList({ postId, commentsData, fetchCommentsFn }) {
             ) : (
                 <StyledList>
                     {comments.map((comment) => (
-                        // <PostItem key={comment.id} data={comment} />
-                        <li>{comment.name}</li>
+                        <CommentItem key={comment.id} data={comment} />
                     ))}
                 </StyledList>
             )}
