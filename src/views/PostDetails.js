@@ -1,16 +1,50 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import UserHeader from '../components/UserHeader';
+import styled from 'styled-components';
+import { useParams, Link } from 'react-router-dom';
+
+const StyledWrapper = styled.div`
+    max-width: 1200px;
+    margin: 40px auto 0;
+`;
+
+const DetailsHeader = styled.div`
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+`;
+
+const StyledIcon = styled.i`
+    color: #e4bb7a;
+    font-size: 3rem;
+`;
 
 function PostDetails(props) {
-    const { name, post: { title } } = props.location.state;
+    const { name, post: { title, body } } = props.location.state;
     let { id, post } = useParams();
     
     return (
-        <div>
-            hello this is user {id} name is {name} and post {post} with title {title}
-            <UserHeader name={name} />
-        </div>
+        <StyledWrapper>
+            {/* hello this is user {id} name is {name} and post {post} with title {title} */}
+            <DetailsHeader>
+                <Link
+                    to={{
+                        pathname: `/user/${id}`,
+                        state: {
+                            name: name
+                        }
+                    }}
+                >
+                    <StyledIcon
+                        className="fa fa-arrow-left"
+                        aria-hidden="true"
+                    ></StyledIcon>
+                </Link>
+                <h2>{name}</h2>
+            </DetailsHeader>
+            <article>
+                <h1>{title}</h1>
+                <p>{body}</p>
+            </article>
+        </StyledWrapper>
     );
 }
 

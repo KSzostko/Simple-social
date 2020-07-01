@@ -55,7 +55,7 @@ const UserItem = ({ data }) => {
                 to={{
                     pathname: `/user/${id}`,
                     state: {
-                        user: data,
+                        name: name,
                     }
                 }}
             >
