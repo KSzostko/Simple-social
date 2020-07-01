@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
+import PostBody from '../components/PostBody';
 
 const StyledWrapper = styled.div`
     max-width: 1200px;
@@ -23,7 +24,6 @@ function PostDetails(props) {
     
     return (
         <StyledWrapper>
-            {/* hello this is user {id} name is {name} and post {post} with title {title} */}
             <DetailsHeader>
                 <Link
                     to={{
@@ -40,10 +40,7 @@ function PostDetails(props) {
                 </Link>
                 <h2>{name}</h2>
             </DetailsHeader>
-            <article>
-                <h1>{title}</h1>
-                <p>{body}</p>
-            </article>
+            <PostBody title={title} body={body} />
         </StyledWrapper>
     );
 }
