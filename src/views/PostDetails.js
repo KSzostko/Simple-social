@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
+import CommentsList from '../components/CommentsList';
 import PostBody from '../components/PostBody';
 import Button from '../components/Button';
 
@@ -56,6 +57,7 @@ function PostDetails(props) {
                 <StyledButton>Show comments</StyledButton>
                 <StyledButton>Add comment</StyledButton>
             </ButtonsWrapper>
+            <CommentsList postId={post} />
         </StyledWrapper>
     );
 }
