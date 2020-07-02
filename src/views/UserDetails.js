@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 import { UserContext } from '../context';
 import PostsList from '../components/PostsList';
 import Button from '../components/Button';
+import TestModal from '../components/TestModal';
 
 const StyledWrapper = styled.div`
     max-width: 1200px;
@@ -41,6 +42,7 @@ function UserDetails(props) {
                     <Button round>+</Button>
                 </DetailsHeader>
                 <PostsList userId={id} />
+                <TestModal />
             </StyledWrapper>
         </UserContext.Provider>
     );
