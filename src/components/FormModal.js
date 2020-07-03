@@ -1,18 +1,26 @@
 import React from 'react';
 import Modal from 'react-modal';
-import Button from './Button';
+import TestForm from './TestForm';
 
 Modal.setAppElement('#root');
 
-const FormModal = ({ modalOpen, closeModal }) => (
-    <Modal 
-        isOpen={modalOpen}
-        onRequestClose={closeModal}
-    >
-        <h2>Modal title</h2>
-        <p>Modal body</p>
-        <Button onClick={closeModal}>x</Button>
-    </Modal>
-);
+class FormModal extends React.Component {
+    submit = values => {
+        console.log(values);
+    }
+    
+    render() {
+        const { modalOpen, closeModal } = this.props;
+        
+        return (
+            <Modal 
+                isOpen={modalOpen}
+                onRequestClose={closeModal}
+            >
+                <TestForm onSubmit={this.submit} />
+            </Modal>
+        );
+    }
+}
 
 export default FormModal;
