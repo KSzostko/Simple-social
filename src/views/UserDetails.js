@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useParams, Link } from 'react-router-dom';
 import { UserContext } from '../context';
 import PostsList from '../components/PostsList';
 import Button from '../components/Button';
-import TestModal from '../components/TestModal';
+import FormModal from '../components/FormModal';
 
 const StyledWrapper = styled.div`
     max-width: 1200px;
@@ -27,6 +27,16 @@ const StyledIcon = styled.i`
 function UserDetails(props) {
     const { name } = props.location.state;
     let { id } = useParams();
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const openModal = () => {
+        setModalOpen(true);
+    }
+
+    const closeModal = () => {
+        setModalOpen(false);
+    }
     
     return (
         <UserContext.Provider value={name}>
@@ -39,10 +49,18 @@ function UserDetails(props) {
                         ></StyledIcon>
                     </Link>
                     <h2>{name}</h2>
-                    <Button round>+</Button>
+                    <Button 
+                        round
+                        onClick={openModal}
+                    >
+                        +
+                    </Button>
                 </DetailsHeader>
                 <PostsList userId={id} />
-                <TestModal />
+                <FormModal 
+                    modalOpen={modalOpen} 
+                    closeModal={closeModal} 
+                />
             </StyledWrapper>
         </UserContext.Provider>
     );
