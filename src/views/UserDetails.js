@@ -28,7 +28,7 @@ function UserDetails(props) {
     const { name } = props.location.state;
     let { id } = useParams();
 
-    const [modalOpen, setModalOpen] = useState(false);
+    const [modalOpen, setModalOpen] = useState(true);
 
     const openModal = () => {
         setModalOpen(true);

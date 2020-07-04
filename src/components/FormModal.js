@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import TestForm from './TestForm';
+import PostForm from './PostForm';
 
 Modal.setAppElement('#root');
 
@@ -17,7 +17,10 @@ class FormModal extends React.Component {
                 isOpen={modalOpen}
                 onRequestClose={closeModal}
             >
-                <TestForm onSubmit={this.submit} />
+                <PostForm 
+                    onSubmit={this.submit} 
+                    closeModal={closeModal}
+                />
             </Modal>
         );
     }
