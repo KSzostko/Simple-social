@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import PostForm from './PostForm';
+import AddForm from './AddForm';
 
 const customStyles = {
     content: {
@@ -22,7 +22,7 @@ class FormModal extends React.Component {
     }
     
     render() {
-        const { modalOpen, closeModal } = this.props;
+        const { modalOpen, closeModal, type } = this.props;
         
         return (
             <Modal 
@@ -30,7 +30,8 @@ class FormModal extends React.Component {
                 onRequestClose={closeModal}
                 style={customStyles}
             >
-                <PostForm 
+                <AddForm 
+                    type={type}
                     onSubmit={this.submit} 
                     closeModal={closeModal}
                 />

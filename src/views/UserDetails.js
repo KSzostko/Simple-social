@@ -28,7 +28,7 @@ function UserDetails(props) {
     const { name } = props.location.state;
     let { id } = useParams();
 
-    const [modalOpen, setModalOpen] = useState(true);
+    const [modalOpen, setModalOpen] = useState(false);
 
     const openModal = () => {
         setModalOpen(true);
@@ -57,7 +57,8 @@ function UserDetails(props) {
                     </Button>
                 </DetailsHeader>
                 <PostsList userId={id} />
-                <FormModal 
+                <FormModal
+                    type="post" 
                     modalOpen={modalOpen} 
                     closeModal={closeModal} 
                 />

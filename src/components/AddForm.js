@@ -28,7 +28,7 @@ const StyledLabel = styled.label`
 `;
 
 const StyledInputField = styled(Field)`
-    margin-left: 5px;
+    margin-left: ${props => props.formtype === 'comment' ? '0' : '5px'};
     padding: 5px 10px;
     border: 1px solid #BBB;
     border-radius: 4px;
@@ -61,15 +61,39 @@ const StyledButton = styled(Button)`
 `;
 
 let TestForm = props => {
-    const { handleSubmit, closeModal } = props;
+    const { handleSubmit, closeModal, type } = props;
 
     return (
         <StyledForm onSubmit={handleSubmit}>
-            <StyledHeader>Add post</StyledHeader>
+            <StyledHeader>Add {type === 'comment' ? 'comment' : 'post'}</StyledHeader>
             <StyledWrapper>
-                <StyledLabel htmlFor="title">Title</StyledLabel>
-                <StyledInputField name="title" component="input" type="text" />
+                <StyledLabel 
+                    htmlFor={type === 'comment' ? 'name' : 'title'}
+                >
+                    {type === 'comment' ? 'Name' : 'Title'}
+                </StyledLabel>
+                <StyledInputField 
+                    name={type === 'comment' ? 'name' : 'title'} 
+                    component="input" 
+                    type="text"
+                    formtype={type} 
+                />
             </StyledWrapper>
+            {type === 'comment' && (
+                <StyledWrapper>
+                    <StyledLabel 
+                        htmlFor="email"
+                    >
+                        Email
+                    </StyledLabel>
+                    <StyledInputField 
+                        name="email" 
+                        component="input" 
+                        type="email"
+                        formtype={type} 
+                    />
+                </StyledWrapper>
+            )}
             <StyledWrapper>
                 <StyledLabel htmlFor="body">Body</StyledLabel>
                 <StyledTextareaField name="body" component="textarea" rows="6" />
