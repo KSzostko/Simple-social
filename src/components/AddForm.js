@@ -60,7 +60,7 @@ const StyledButton = styled(Button)`
     margin-right: 20px;
 `;
 
-let TestForm = props => {
+let AddForm = props => {
     const { handleSubmit, closeModal, type } = props;
 
     return (
@@ -106,8 +106,8 @@ let TestForm = props => {
     );
 }
 
-TestForm = reduxForm({
+AddForm = reduxForm({
     form: 'post',
-})(TestForm);
+})(AddForm);
 
-export default TestForm;
+export default AddForm;
