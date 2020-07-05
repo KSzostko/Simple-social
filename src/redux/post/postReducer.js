@@ -2,6 +2,9 @@ import {
     FETCH_POSTS_REQUEST,
     FETCH_POSTS_SUCCESS,
     FETCH_POSTS_FAILURE,
+    ADD_POST_REQUEST,
+    ADD_POST_SUCCESS,
+    ADD_POST_FAILURE,
 } from './postTypes';
 
 const initialState = {
@@ -24,6 +27,26 @@ const postReducer = (state = initialState, action) => {
                 error: '',
             };
         case FETCH_POSTS_FAILURE:
+            return {
+                loading: false,
+                posts: [],
+                error: action.payload,
+            };
+        case ADD_POST_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case ADD_POST_SUCCESS:
+            return {
+                loading: false,
+                posts: [
+                    ...state.posts,
+                    action.payload,
+                ],
+                error: '',
+            };
+        case ADD_POST_FAILURE:
             return {
                 loading: false,
                 posts: [],
