@@ -5,6 +5,9 @@ import {
     ADD_POST_REQUEST,
     ADD_POST_SUCCESS,
     ADD_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
+    DELETE_POST_FAILURE,
 } from './postTypes';
 
 const initialState = {
@@ -47,6 +50,25 @@ const postReducer = (state = initialState, action) => {
                 error: '',
             };
         case ADD_POST_FAILURE:
+            return {
+                loading: false,
+                posts: [],
+                error: action.payload,
+            };
+        case DELETE_POST_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case DELETE_POST_SUCCESS:
+            return {
+                loading: false,
+                posts: [
+                    ...state.posts.filter(({ id }) => id !== action.payload),
+                ],
+                error: '',
+            };
+        case DELETE_POST_FAILURE:
             return {
                 loading: false,
                 posts: [],

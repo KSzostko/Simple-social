@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { UserContext } from '../context';
+import { deletePost } from '../redux/post/postActions';
 import Button from './Button';
 
 const StyledListItem = styled.li`
@@ -24,14 +26,14 @@ const StyledIcon = styled.i`
     font-size: 2rem;
 `;
 
-function PostItem({ data }) {
+function PostItem({ data, deletePostFn }) {
     const { userId, id, title } = data;
     
     return (
         <UserContext.Consumer>
             {value => (
                 <StyledListItem>
-                    <Button icon>
+                    <Button icon onClick={() => deletePostFn(id)}>
                         <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
                     </Button>
                     <StyledHeader>{title}</StyledHeader>
@@ -52,4 +54,10 @@ function PostItem({ data }) {
     );
 }
 
-export default PostItem;
+const mapDispatchToProps = dispatch => {
+    return {
+        deletePostFn: id => dispatch(deletePost(id)),
+    }
+}
+
+export default connect(null, mapDispatchToProps)(PostItem);

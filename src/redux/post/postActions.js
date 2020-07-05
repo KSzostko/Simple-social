@@ -6,6 +6,9 @@ import {
     ADD_POST_REQUEST,
     ADD_POST_SUCCESS,
     ADD_POST_FAILURE,
+    DELETE_POST_REQUEST,
+    DELETE_POST_SUCCESS,
+    DELETE_POST_FAILURE,
 } from './postTypes';
 
 const fetchPostsRequest = () => ({
@@ -75,3 +78,36 @@ export const addPost = post => {
             });
     }
 };
+
+const deletePostRequest = () => ({
+    type: DELETE_POST_REQUEST,
+});
+
+const deletePostSuccess = id => ({
+    type: DELETE_POST_SUCCESS,
+    payload: id,
+});
+
+const deletePostFailure = error => ({
+    type: DELETE_POST_FAILURE,
+    payload: error,
+});
+
+export const deletePost = id => {
+    return (dispatch) => {
+        dispatch(deletePostRequest());
+
+        axios.delete(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8"
+            }          
+        })
+            .then(resp => {
+                dispatch(deletePostSuccess(id));
+            })
+            .catch(err => {
+                const message = err.message;
+                dispatch(deletePostFailure(message));
+            });
+    }
+}
