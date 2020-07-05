@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { addPost } from '../redux/post/postActions';
 import AddForm from './AddForm';
 
 const customStyles = {
@@ -19,9 +20,13 @@ Modal.setAppElement('#root');
 
 class FormModal extends React.Component {
     submit = values => {
-        console.log(values);
-        // const { type, userId, postId } = this.props;
-        
+        const { type, addPostFn, closeModal } = this.props;
+
+        closeModal();
+
+        if(type === 'post') {
+            addPostFn(values);
+        }
         // if(type === 'post') {
         //     const { title, body } = values;
 
@@ -78,4 +83,10 @@ class FormModal extends React.Component {
     }
 }
 
-export default FormModal;
+const mapDispatchToProps = dispatch => {
+    return {
+        addPostFn: post => dispatch(addPost(post)),
+    };
+}
+
+export default connect(null, mapDispatchToProps)(FormModal);
