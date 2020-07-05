@@ -99,7 +99,7 @@ let AddForm = props => {
                 <StyledTextareaField name="body" component="textarea" rows="6" />
             </StyledWrapper>
             <StyledButtonWrapper>
-                <StyledButton onClick={closeModal}>Cancel</StyledButton>
+                <StyledButton type="button" onClick={closeModal}>Cancel</StyledButton>
                 <Button type="submit">Save</Button>
             </StyledButtonWrapper>
         </StyledForm>

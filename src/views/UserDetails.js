@@ -58,6 +58,7 @@ function UserDetails(props) {
                 </DetailsHeader>
                 <PostsList userId={id} />
                 <FormModal
+                    userId={id}
                     type="post" 
                     modalOpen={modalOpen} 
                     closeModal={closeModal} 

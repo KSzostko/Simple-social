@@ -76,6 +76,7 @@ function PostDetails(props) {
             </ButtonsWrapper>
             {commentsOpen && <CommentsList postId={post} />}
             <FormModal
+                postId={post}
                 type="comment" 
                 modalOpen={modalOpen} 
                 closeModal={closeModal} 
