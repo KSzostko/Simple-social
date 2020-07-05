@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
 import { addPost } from '../redux/post/postActions';
+import { addComment } from '../redux/comment/commentActions';
 import AddForm from './AddForm';
 
 const customStyles = {
@@ -20,48 +21,18 @@ Modal.setAppElement('#root');
 
 class FormModal extends React.Component {
     submit = values => {
-        const { type, addPostFn, closeModal } = this.props;
+        const { type, addPostFn, addCommentFn, closeModal, postId, userId } = this.props;
 
         closeModal();
 
         if(type === 'post') {
+            values.userId = userId;
             addPostFn(values);
         }
-        // if(type === 'post') {
-        //     const { title, body } = values;
-
-        //     axios.post('https://jsonplaceholder.typicode.com/posts', {
-        //         title,
-        //         body,
-        //         userId: parseInt(userId),
-        //     }, {
-        //         headers: {
-        //             "Content-Type": "application/json; charset=UTF-8"
-        //         }
-        //     })
-        //         .then(resp => {
-        //             console.log(resp.data);
-        //             const post = resp.data;
-        //             // function for adding post
-        //         })
-        //         .catch(err => console.log(err));
-        // } 
-        // else if(type === 'comment') {
-        //     const { name, email, body } = values;
-            
-        //     axios.post('https://jsonplaceholder.typicode.com/comments', {
-        //         name,
-        //         email,
-        //         body,
-        //         postId: parseInt(postId),
-        //     }, {
-        //         headers: {
-        //             "Content-Type": "application/json; charset=UTF-8",
-        //         }
-        //     })
-        //         .then(resp => console.log(resp.data))
-        //         .catch(err => console.log(err));
-        // }
+        else if(type === 'comment') {
+            values.postId = postId;
+            addCommentFn(values);
+        }
     }
     
     render() {
@@ -86,6 +57,7 @@ class FormModal extends React.Component {
 const mapDispatchToProps = dispatch => {
     return {
         addPostFn: post => dispatch(addPost(post)),
+        addCommentFn: comment => dispatch(addComment(comment)),
     };
 }
 

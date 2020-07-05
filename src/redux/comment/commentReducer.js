@@ -1,7 +1,10 @@
 import {
     FETCH_COMMENTS_REQUEST,
     FETCH_COMMENTS_SUCCES,
-    FETCH_COMMENTS_FAILURE
+    FETCH_COMMENTS_FAILURE,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS,
+    ADD_COMMENT_FAILURE,
 } from './commentTypes';
 
 const initialState = {
@@ -29,6 +32,26 @@ const commentReducer = (state = initialState, action) => {
                 comments: [],
                 error: action.payload,
             };
+        case ADD_COMMENT_REQUEST:
+            return {
+                ...state,
+                loading: true,
+            };
+        case ADD_COMMENT_SUCCESS:
+            return {
+                loading: false,
+                comments: [
+                    ...state.comments,
+                    action.payload,
+                ],
+                error: '',
+            };
+        case ADD_COMMENT_FAILURE:
+            return {
+                loading: false,
+                comments: [],
+                error: action.payload,
+            }
         default:
             return state;
     }

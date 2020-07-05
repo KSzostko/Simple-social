@@ -2,7 +2,10 @@ import axios from 'axios';
 import {
     FETCH_COMMENTS_REQUEST,
     FETCH_COMMENTS_SUCCES,
-    FETCH_COMMENTS_FAILURE
+    FETCH_COMMENTS_FAILURE,
+    ADD_COMMENT_REQUEST,
+    ADD_COMMENT_SUCCESS,
+    ADD_COMMENT_FAILURE,
 } from './commentTypes';
 
 const fetchCommentsRequest = () => ({
@@ -30,6 +33,46 @@ export const fetchComments = (id) => {
             .catch(err => {
                 const message = err.message;
                 dispatch(fetchCommentsFailure(message));
+            });
+    }
+}
+
+const addCommentRequest = () => ({
+    type: ADD_COMMENT_REQUEST,
+});
+
+const addCommentSuccess = comment => ({
+    type: ADD_COMMENT_SUCCESS,
+    payload: comment,
+});
+
+const addCommentFailure = error => ({
+    type: ADD_COMMENT_FAILURE,
+    payload: error,
+});
+
+export const addComment = comment => {
+    return (dispatch) => {
+        const { name, email, body, postId } = comment;
+
+        dispatch(addCommentRequest());
+        axios.post('https://jsonplaceholder.typicode.com/comments', {
+            name,
+            email,
+            body,
+            postId: parseInt(postId),
+        }, {
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            }
+        })
+            .then(resp => {
+                const data = resp.data;
+                dispatch(addCommentSuccess(data));
+            })
+            .catch(err => {
+                const message = err.message;
+                dispatch(addCommentFailure(message));
             });
     }
 }
