@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
     border: 1px solid #000;
@@ -43,6 +44,16 @@ function CommentItem({ data }) {
             </article>
         </StyledListItem>
     );
+}
+
+CommentItem.propTypes = {
+    data: PropTypes.shape({
+        postId: PropTypes.number,
+        id: PropTypes.number,
+        name: PropTypes.string,
+        email: PropTypes.string,
+        body: PropTypes.string,
+    })
 }
 
 export default CommentItem;
