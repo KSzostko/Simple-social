@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { fetchPosts } from '../redux/post/postActions';
 import PostItem from './PostItem';
 import Loader from './Loader';
@@ -45,5 +46,22 @@ const mapDispatchToProps = dispatch => {
         fetchPostsFn: id => dispatch(fetchPosts(id)),
     };
 }
+
+PostsList.propTypes = {
+    userId: PropTypes.string,
+    fetchPostsFn: PropTypes.func,
+    postsData: PropTypes.shape({
+        loading: PropTypes.bool,
+        error: PropTypes.string,
+        posts: PropTypes.arrayOf(
+            PropTypes.shape({
+                userId: PropTypes.number,
+                id: PropTypes.number,
+                title: PropTypes.string,
+                body: PropTypes.string,
+            })
+        ),
+    }),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostsList);
