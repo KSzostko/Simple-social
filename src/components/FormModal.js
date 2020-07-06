@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { addPost } from '../redux/post/postActions';
 import { addComment } from '../redux/comment/commentActions';
 import AddForm from './AddForm';
@@ -60,5 +61,15 @@ const mapDispatchToProps = dispatch => {
         addCommentFn: comment => dispatch(addComment(comment)),
     };
 }
+
+FormModal.propTypes = {
+    addCommentFn: PropTypes.func,
+    addPostFn: PropTypes.func,
+    closeModal: PropTypes.func,
+    modalOpen: PropTypes.bool,
+    type: PropTypes.string,
+    userId: PropTypes.string,
+    postId: PropTypes.string,
+};
 
 export default connect(null, mapDispatchToProps)(FormModal);
