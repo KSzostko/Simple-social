@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const PostBody = ({ title, body }) => (
     <article>
@@ -6,5 +7,10 @@ const PostBody = ({ title, body }) => (
         <p>{body}</p>
     </article>
 );
+
+PostBody.propTypes = {
+    title: PropTypes.string,
+    body: PropTypes.string,
+};
 
 export default PostBody;
