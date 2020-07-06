@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Button from './Button';
 
 const StyledForm = styled.form`
@@ -109,5 +110,14 @@ let AddForm = props => {
 AddForm = reduxForm({
     form: 'post',
 })(AddForm);
+
+StyledInputField.propTypes = {
+    formtype: PropTypes.string,
+};
+
+AddForm.propTypes = {
+    closeModal: PropTypes.func,
+    type: PropTypes.string,
+};
 
 export default AddForm;

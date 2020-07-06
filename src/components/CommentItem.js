@@ -54,6 +54,6 @@ CommentItem.propTypes = {
         email: PropTypes.string,
         body: PropTypes.string,
     })
-}
+};
 
 export default CommentItem;
