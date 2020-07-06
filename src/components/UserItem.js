@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledListItem = styled.li`
     display: grid;
@@ -63,6 +64,19 @@ const UserItem = ({ data }) => {
             </StyledLink>
         </StyledListItem>
     );
+};
+
+UserItem.propTypes = {
+    data: PropTypes.shape({
+        id: PropTypes.number,
+        name: PropTypes.string,
+        username: PropTypes.string,
+        email: PropTypes.string,
+        adress: PropTypes.object,
+        phone: PropTypes.string,
+        website: PropTypes.string,
+        company: PropTypes.objectOf(PropTypes.string),
+    }),
 };
 
 export default UserItem;
