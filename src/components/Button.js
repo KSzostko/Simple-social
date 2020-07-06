@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const StyledButton = styled.button`
     background-color: ${props => props.icon ? '#fff': '#e4bb7a'};
@@ -24,5 +25,10 @@ const StyledButton = styled.button`
         }
     `}
 `;
+
+StyledButton.propTypes = {
+    icon: PropTypes.bool,
+    round: PropTypes.bool,
+};
 
 export default StyledButton;
