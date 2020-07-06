@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { fetchComments } from '../redux/comment/commentActions';
 import CommentItem from './CommentItem';
 import Loader from './Loader';
@@ -45,5 +46,23 @@ const mapDispatchToProps = dispatch => {
         fetchCommentsFn: id => dispatch(fetchComments(id)),
     };
 }
+
+CommentsList.propTypes = {
+    postId: PropTypes.string,
+    fetchCommentsFn: PropTypes.func,
+    commentsData: PropTypes.shape({
+        loading: PropTypes.bool,
+        error: PropTypes.string,
+        comments: PropTypes.arrayOf(
+            PropTypes.shape({
+                postId: PropTypes.number,
+                id: PropTypes.number,
+                name: PropTypes.string,
+                email: PropTypes.string,
+                body: PropTypes.string,
+            })
+        ),
+    }),
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentsList);
