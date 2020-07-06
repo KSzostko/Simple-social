@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { UserContext } from '../context';
 import { deletePost } from '../redux/post/postActions';
 import Button from './Button';
@@ -59,5 +60,15 @@ const mapDispatchToProps = dispatch => {
         deletePostFn: id => dispatch(deletePost(id)),
     }
 }
+
+PostItem.propTypes = {
+    deletePostFn: PropTypes.func,
+    data: PropTypes.shape({
+        userId: PropTypes.number,
+        id: PropTypes.number,
+        title: PropTypes.string,
+        body: PropTypes.string,
+    }),
+};
 
 export default connect(null, mapDispatchToProps)(PostItem);
