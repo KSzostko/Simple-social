@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { fetchUsers } from '../redux/user/userActions';
 import UserItem from './UserItem';
 import Loader from './Loader';
@@ -52,5 +53,23 @@ const mapDispatchToProps = dispatch => {
         fetchUsersFn: () => dispatch(fetchUsers()),
     };
 }
+
+UsersList.propTypes = {
+    fetchUsersFn: PropTypes.func,
+    userData: PropTypes.shape({
+        loading: PropTypes.bool,
+        error: PropTypes.string,
+        users: PropTypes.arrayOf(PropTypes.shape({
+            id: PropTypes.number,
+            name: PropTypes.string,
+            username: PropTypes.string,
+            email: PropTypes.string,
+            adress: PropTypes.object,
+            phone: PropTypes.string,
+            website: PropTypes.string,
+            company: PropTypes.objectOf(PropTypes.string),
+        }))
+    })
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
