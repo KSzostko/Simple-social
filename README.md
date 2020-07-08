@@ -1,1 +1,3 @@
-in progress
+The React application which displays data from the [API](https://jsonplaceholder.typicode.com/) about users (Users Page view) and their posts (UserDetails view) and comments (Post Details view). The application also gives the ability to create posts and comments with the help of modal forms(I used react-modal and redux-form for that). After creating object via form [the resource will not be really created on the server but it will be faked as if](https://jsonplaceholder.typicode.com/guide.html), so after changing view posts/comments lists will return to their initial state. Additionaly posts can be removed (this also will not be deleted on the server). Loaders are displayed while data are not yet fetched. For the state management I used redux and redux-thunk middleware for asynchronous actions.
+Link: https://kszostko-simple-social.netlify.app/  
+(later I will add tests, form validation and maybe Formik instead of Redux-form)
