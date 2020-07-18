@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { addPost } from '../redux/post/postActions';
 import Button from './Button';
+import TextError from './TextError';
 
 const StyledForm = styled(Form)`
     display: flex;
@@ -39,6 +40,10 @@ const StyledInputField = styled(Field)`
 
     &:focus {
         border-color: #252B2D;
+    }
+
+    &:invalid {
+        border-color: red;
     }
 `;
 
@@ -84,6 +89,7 @@ function PostForm(props) {
         
         addPostFn(values);
     };
+
     
     return (
         <Formik
@@ -100,7 +106,7 @@ function PostForm(props) {
                             id="title" 
                             name="title"
                         />
-                        <ErrorMessage name="title" />
+                        <ErrorMessage name="title" component={TextError} />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="body">Body</StyledLabel>
@@ -110,7 +116,7 @@ function PostForm(props) {
                             name="body"
                             rows="6"
                         />
-                        <ErrorMessage name="body" />
+                        <ErrorMessage name="body" component={TextError} />
                     </StyledWrapper>
                     <StyledButtonWrapper>
                         <StyledButton type="button" onClick={closeModal}>Cancel</StyledButton>

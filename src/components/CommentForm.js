@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { addComment } from '../redux/comment/commentActions'
 import Button from './Button';
+import TextError from './TextError';
 
 const StyledForm = styled(Form)`
     display: flex;
@@ -102,7 +103,7 @@ function CommentForm(props) {
                             id="name" 
                             name="name"
                         />
-                        <ErrorMessage name="name" />
+                        <ErrorMessage name="name" component={TextError} />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="email">Email</StyledLabel>
@@ -111,7 +112,7 @@ function CommentForm(props) {
                             id="email" 
                             name="email"
                         />
-                        <ErrorMessage name="email" />
+                        <ErrorMessage name="email" component={TextError} />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="body">Body</StyledLabel>
@@ -121,7 +122,7 @@ function CommentForm(props) {
                             name="body"
                             rows="6"
                         />
-                        <ErrorMessage name="body" />
+                        <ErrorMessage name="body" component={TextError} />
                     </StyledWrapper>
                     <StyledButtonWrapper>
                         <StyledButton type="button" onClick={closeModal}>Cancel</StyledButton>
