@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { addPost } from '../redux/post/postActions';
 import Button from './Button';
 
 const StyledForm = styled(Form)`
@@ -63,7 +65,7 @@ const StyledButton = styled(Button)`
 `;
 
 function PostForm(props) {
-    const { closeModal } = props;
+    const { closeModal, userId, addPostFn } = props;
     
     const initialValues = {
         title: '',
@@ -75,7 +77,13 @@ function PostForm(props) {
         body: Yup.string().required('Required'),
     });
 
-    const onSubmit = values => console.log(values);
+    const onSubmit = values => {
+        values.userId = userId;
+
+        closeModal();
+        
+        addPostFn(values);
+    };
     
     return (
         <Formik
@@ -112,8 +120,16 @@ function PostForm(props) {
     );
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        addPostFn: post => dispatch(addPost(post)),
+    };
+}
+
 PostForm.propTypes = {
     closeModal: PropTypes.func,
+    addPostFn: PropTypes.func,
+    userId: PropTypes.string,
 };
 
-export default PostForm;
+export default connect(null, mapDispatchToProps)(PostForm);

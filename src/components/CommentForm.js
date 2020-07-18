@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { addComment } from '../redux/comment/commentActions'
 import Button from './Button';
 
 const StyledForm = styled(Form)`
@@ -63,7 +65,7 @@ const StyledButton = styled(Button)`
 `;
 
 function CommentForm(props) {
-    const { closeModal } = props;
+    const { closeModal, postId , addCommentFn} = props;
     
     const initialValues = {
         name: '',
@@ -77,7 +79,13 @@ function CommentForm(props) {
         body: Yup.string().required('Required'),
     });
 
-    const onSubmit = values => console.log(values);
+    const onSubmit = values => {
+        values.postId = postId;
+
+        closeModal();
+
+        addCommentFn(values);
+    };
     
     return (
         <Formik
@@ -122,8 +130,16 @@ function CommentForm(props) {
     );
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        addCommentFn: comment => dispatch(addComment(comment)),
+    };
+}
+
 CommentForm.propTypes = {
     closeModal: PropTypes.func,
+    addCommentFn: PropTypes.func,
+    postId: PropTypes.string,
 };
 
-export default CommentForm;
+export default connect(null, mapDispatchToProps)(CommentForm);

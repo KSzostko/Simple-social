@@ -1,9 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addPost } from '../redux/post/postActions';
-import { addComment } from '../redux/comment/commentActions';
 import PostForm from './PostForm';
 import CommentForm from './CommentForm';
 
@@ -21,54 +18,33 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-class FormModal extends React.Component {
-    submit = values => {
-        console.log(values);
-        const { type, addPostFn, addCommentFn, closeModal, postId, userId } = this.props;
-
-        closeModal();
-
-        if(type === 'post') {
-            values.userId = userId;
-            addPostFn(values);
-        }
-        else if(type === 'comment') {
-            values.postId = postId;
-            addCommentFn(values);
-        }
-    }
+function FormModal(props) {    
+    const { modalOpen, closeModal, type, userId, postId } = props;
     
-    render() {
-        const { modalOpen, closeModal, type } = this.props;
-        
-        return (
-            <Modal 
-                isOpen={modalOpen}
-                onRequestClose={closeModal}
-                style={customStyles}
-            >
-                {
-                    type === 'post' ? (
-                        <PostForm closeModal={closeModal} />
-                    ) : (
-                        <CommentForm closeModal={closeModal} />
-                    )
-                }
-            </Modal>
-        );
-    }
-}
-
-const mapDispatchToProps = dispatch => {
-    return {
-        addPostFn: post => dispatch(addPost(post)),
-        addCommentFn: comment => dispatch(addComment(comment)),
-    };
+    return (
+        <Modal 
+            isOpen={modalOpen}
+            onRequestClose={closeModal}
+            style={customStyles}
+        >
+            {
+                type === 'post' ? (
+                    <PostForm
+                        closeModal={closeModal}
+                        userId={userId}
+                    />
+                ) : (
+                    <CommentForm
+                        closeModal={closeModal}
+                        postId={postId}
+                    />
+                )
+            }
+        </Modal>
+    );
 }
 
 FormModal.propTypes = {
-    addCommentFn: PropTypes.func,
-    addPostFn: PropTypes.func,
     closeModal: PropTypes.func,
     modalOpen: PropTypes.bool,
     type: PropTypes.string,
@@ -76,4 +52,4 @@ FormModal.propTypes = {
     postId: PropTypes.string,
 };
 
-export default connect(null, mapDispatchToProps)(FormModal);
+export default FormModal;
