@@ -102,6 +102,7 @@ function CommentForm(props) {
                             id="name" 
                             name="name"
                         />
+                        <ErrorMessage name="name" />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="email">Email</StyledLabel>
@@ -110,6 +111,7 @@ function CommentForm(props) {
                             id="email" 
                             name="email"
                         />
+                        <ErrorMessage name="email" />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="body">Body</StyledLabel>
@@ -119,11 +121,12 @@ function CommentForm(props) {
                             name="body"
                             rows="6"
                         />
+                        <ErrorMessage name="body" />
                     </StyledWrapper>
                     <StyledButtonWrapper>
                         <StyledButton type="button" onClick={closeModal}>Cancel</StyledButton>
-                        <Button type="submit">Save</Button>
-                    </StyledButtonWrapper> 
+                        <Button type="submit" disabled={!formik.isValid}>Save</Button>
+                    </StyledButtonWrapper>
                 </StyledForm>
             )}
         </Formik>

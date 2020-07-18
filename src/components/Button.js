@@ -24,6 +24,11 @@ const StyledButton = styled.button`
             background-color: rgba(187, 144, 75, 0.9);
         }
     `}
+
+    &:disabled {
+        background-color: rgba(228, 187, 122, 0.6);
+        cursor: not-allowed;
+    }
 `;
 
 StyledButton.propTypes = {

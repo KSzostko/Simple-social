@@ -100,6 +100,7 @@ function PostForm(props) {
                             id="title" 
                             name="title"
                         />
+                        <ErrorMessage name="title" />
                     </StyledWrapper>
                     <StyledWrapper>
                         <StyledLabel htmlFor="body">Body</StyledLabel>
@@ -109,11 +110,12 @@ function PostForm(props) {
                             name="body"
                             rows="6"
                         />
+                        <ErrorMessage name="body" />
                     </StyledWrapper>
                     <StyledButtonWrapper>
                         <StyledButton type="button" onClick={closeModal}>Cancel</StyledButton>
-                        <Button type="submit">Save</Button>
-                    </StyledButtonWrapper> 
+                        <Button type="submit" disabled={!formik.isValid}>Save</Button>
+                    </StyledButtonWrapper>
                 </StyledForm>
             )}
         </Formik>
