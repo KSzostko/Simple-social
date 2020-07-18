@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPost } from '../redux/post/postActions';
 import { addComment } from '../redux/comment/commentActions';
-import AddForm from './AddForm';
+import PostForm from './PostForm';
+import CommentForm from './CommentForm';
 
 const customStyles = {
     content: {
@@ -22,6 +23,7 @@ Modal.setAppElement('#root');
 
 class FormModal extends React.Component {
     submit = values => {
+        console.log(values);
         const { type, addPostFn, addCommentFn, closeModal, postId, userId } = this.props;
 
         closeModal();
@@ -45,11 +47,13 @@ class FormModal extends React.Component {
                 onRequestClose={closeModal}
                 style={customStyles}
             >
-                <AddForm 
-                    type={type}
-                    onSubmit={this.submit} 
-                    closeModal={closeModal}
-                />
+                {
+                    type === 'post' ? (
+                        <PostForm closeModal={closeModal} />
+                    ) : (
+                        <CommentForm closeModal={closeModal} />
+                    )
+                }
             </Modal>
         );
     }
