@@ -5,4 +5,12 @@ const fakePost = () => ({
     body: 'Post body',
 });
 
-export { fakePost };
+const fakeComment = () => ({
+    postId: 1,
+    id: 1,
+    name: 'Comment name',
+    email: 'user@gmail.com',
+    body: 'Comment body',
+});
+
+export { fakePost, fakeComment };

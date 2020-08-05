@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentItem /> renders and matches the snapshot 1`] = `
+<li
+  class="sc-AxjAm iAtNxT"
+>
+  <article>
+    <header
+      class="sc-AxirZ lcgpFI"
+    >
+      <h3
+        class="sc-AxiKw cckNeg"
+      >
+        Comment name
+      </h3>
+      <span
+        class="sc-AxhCb hcObeU"
+      >
+        user@gmail.com
+      </span>
+    </header>
+    <p
+      class="sc-AxhUy hRwRRj"
+    >
+      Comment body
+    </p>
+  </article>
+</li>
+`;
