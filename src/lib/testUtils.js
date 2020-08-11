@@ -13,4 +13,17 @@ const fakeComment = () => ({
     body: 'Comment body',
 });
 
-export { fakePost, fakeComment };
+const fakeUser = () => ({
+    id: 1,
+    name: 'John Doe',
+    email: 'jdoe@gmail.com',
+    phone: '123-456-789',
+    website: 'hildegard.org',
+    company: {
+        name: 'Company Name',
+        catchPhrase: 'phrase',
+        bs: 'bs text',
+    }
+});
+
+export { fakePost, fakeComment, fakeUser };

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<UserItem /> renders and matches the snapshot 1`] = `
+<li
+  class="sc-AxjAm gSFqbq"
+>
+  <h2>
+    John Doe
+  </h2>
+  <ul
+    class="sc-AxirZ dzmujv"
+  >
+    <li>
+      jdoe@gmail.com
+    </li>
+    <li>
+      123-456-789
+    </li>
+    <li>
+      hildegard.org
+    </li>
+  </ul>
+  <ul
+    class="sc-AxirZ kEnYeA"
+  >
+    <li>
+      Company Name
+    </li>
+    <li>
+      phrase
+    </li>
+    <li>
+      bs text
+    </li>
+  </ul>
+  <a
+    class="sc-AxiKw jKyKl"
+    href="/user/1"
+  >
+    Details
+  </a>
+</li>
+`;
