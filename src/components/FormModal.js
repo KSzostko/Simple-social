@@ -16,7 +16,7 @@ const customStyles = {
     },
 };
 
-Modal.setAppElement('#root');
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 function FormModal(props) {    
     const { modalOpen, closeModal, type, userId, postId } = props;
