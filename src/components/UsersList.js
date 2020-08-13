@@ -32,7 +32,7 @@ function UsersList({ userData, fetchUsersFn }) {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <StyledList>
+                <StyledList data-testid="users-list">
                     {users.map((user) => (
                         <UserItem key={user.id} data={user} />
                     ))}
