@@ -35,7 +35,10 @@ function PostItem({ data, deletePostFn }) {
             {value => (
                 <StyledListItem>
                     <Button icon onClick={() => deletePostFn(id)}>
-                        <StyledIcon className="fa fa-trash-o" aria-hidden="true"></StyledIcon>
+                        <StyledIcon
+                        className="fa fa-trash-o"
+                        aria-hidden="true"
+                        data-testid="trash-button"></StyledIcon>
                     </Button>
                     <StyledHeader>{title}</StyledHeader>
                     <Link to={{
