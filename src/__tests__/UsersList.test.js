@@ -25,7 +25,9 @@ describe('<UsersList />', () => {
         screen.getByTestId('loader');
     });
 
-    it('renders users list after receiving data', async () => {
+    it('renders users list and displays users data after successfull api call', async () => {
+        const fakeUserData = fakeUser();
+        
         render(
             <Provider store={store}>
                 <UsersList />
@@ -35,6 +37,27 @@ describe('<UsersList />', () => {
         );
 
         await wait(() => screen.getByTestId('users-list'));
-        screen.debug();
+        await wait(() => screen.findByText(fakeUserData.name));
+        await wait(() => screen.findByText(fakeUserData.email));
+        await wait(() => screen.findByText(fakeUserData.phone));
+    });
+
+    it('displays an error after unsuccessfull data fetching', async () => {
+        const errorMessage = 'API call was not successfull';
+        
+        mockAxios.get.mockRejectedValue({
+            message: errorMessage
+        });
+        
+        render(
+            <Provider store={store}>
+                <UsersList />
+            </Provider>, {
+                wrapper: MemoryRouter
+            }
+        );
+
+        await wait(() => screen.getByText(errorMessage));
+        await wait(() => expect(screen.queryByTestId('users-list')).not.toBeInTheDocument());
     });
 });
