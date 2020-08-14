@@ -25,7 +25,7 @@ function CommentsList({ postId, commentsData, fetchCommentsFn }) {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <StyledList>
+                <StyledList data-testid="comments-list">
                     {comments.map((comment) => (
                         <CommentItem key={comment.id} data={comment} />
                     ))}
