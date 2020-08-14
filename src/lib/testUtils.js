@@ -1,6 +1,6 @@
 const fakePost = () => ({
     userId: 1,
-    postId: 2,
+    id: 2,
     title: 'Post title',
     body: 'Post body',
 });

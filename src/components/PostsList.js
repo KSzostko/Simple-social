@@ -25,7 +25,7 @@ function PostsList({ userId, postsData, fetchPostsFn }) {
             ) : error ? (
                 <p>{error}</p>
             ) : (
-                <StyledList>
+                <StyledList data-testid="posts-list">
                     {posts.map((post) => (
                         <PostItem key={post.id} data={post} />
                     ))}
