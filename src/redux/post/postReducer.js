@@ -19,6 +19,8 @@ const initialState = {
 const postReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_POSTS_REQUEST:
+        case ADD_POST_REQUEST:
+        case DELETE_POST_REQUEST:
             return {
                 ...state,
                 loading: true,
@@ -30,15 +32,12 @@ const postReducer = (state = initialState, action) => {
                 error: '',
             };
         case FETCH_POSTS_FAILURE:
+        case ADD_POST_FAILURE:
+        case DELETE_POST_FAILURE:
             return {
                 loading: false,
                 posts: [],
                 error: action.payload,
-            };
-        case ADD_POST_REQUEST:
-            return {
-                ...state,
-                loading: true,
             };
         case ADD_POST_SUCCESS:
             return {
@@ -49,17 +48,6 @@ const postReducer = (state = initialState, action) => {
                 ],
                 error: '',
             };
-        case ADD_POST_FAILURE:
-            return {
-                loading: false,
-                posts: [],
-                error: action.payload,
-            };
-        case DELETE_POST_REQUEST:
-            return {
-                ...state,
-                loading: true,
-            };
         case DELETE_POST_SUCCESS:
             return {
                 loading: false,
@@ -67,12 +55,6 @@ const postReducer = (state = initialState, action) => {
                     ...state.posts.filter(({ id }) => id !== action.payload),
                 ],
                 error: '',
-            };
-        case DELETE_POST_FAILURE:
-            return {
-                loading: false,
-                posts: [],
-                error: action.payload,
             };
         default:
             return state;

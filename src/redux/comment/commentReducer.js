@@ -16,6 +16,7 @@ const initialState = {
 const commentReducer = (state = initialState, action) => {
     switch(action.type) {
         case FETCH_COMMENTS_REQUEST:
+        case ADD_COMMENT_REQUEST:
             return {
                 ...state,
                 loading: true
@@ -27,15 +28,11 @@ const commentReducer = (state = initialState, action) => {
                 error: '',
             };
         case FETCH_COMMENTS_FAILURE:
+        case ADD_COMMENT_FAILURE:
             return {
                 loading: false,
                 comments: [],
                 error: action.payload,
-            };
-        case ADD_COMMENT_REQUEST:
-            return {
-                ...state,
-                loading: true,
             };
         case ADD_COMMENT_SUCCESS:
             return {
@@ -46,12 +43,6 @@ const commentReducer = (state = initialState, action) => {
                 ],
                 error: '',
             };
-        case ADD_COMMENT_FAILURE:
-            return {
-                loading: false,
-                comments: [],
-                error: action.payload,
-            }
         default:
             return state;
     }
