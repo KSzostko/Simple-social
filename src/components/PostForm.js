@@ -2,35 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import {
+    StyledForm,
+    StyledHeader,
+    StyledWrapper,
+    StyledLabel,
+    StyledTextareaField,
+    StyledButtonWrapper,
+    StyledButton
+} from './styles/formStyles';
 import { addPost } from '../redux/post/postActions';
 import Button from './Button';
 import TextError from './TextError';
-
-const StyledForm = styled(Form)`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-`;
-
-const StyledHeader = styled.h2`
-    margin-top: 0;
-    margin-bottom: 40px;
-`;
-
-const StyledWrapper = styled.div`
-    width: 100%;
-    margin-bottom: 20px;
-    display: grid;
-    grid-template-columns: auto 1fr;
-`;
-
-const StyledLabel = styled.label`
-    margin-top: 10px;
-    margin-right: 40px;
-    font-size: 12px;
-`;
 
 const StyledInputField = styled(Field)`
     margin-left: 5px;
@@ -45,28 +30,6 @@ const StyledInputField = styled(Field)`
     &:invalid {
         border-color: red;
     }
-`;
-
-const StyledTextareaField = styled(Field)`
-    resize: none;
-    padding: 5px 10px;
-    border: 1px solid #BBB;
-    border-radius: 4px;
-
-    &:focus {
-        border-color: #252B2D;
-    }
-`;
-
-const StyledButtonWrapper = styled.div`
-    margin-top: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
-`;
-
-const StyledButton = styled(Button)`
-    margin-right: 20px;
 `;
 
 function PostForm(props) {
