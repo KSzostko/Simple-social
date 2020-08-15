@@ -42,6 +42,34 @@ describe('<PostForm />', () => {
             }
         }));
         expect(screen.getByText(/required/i)).toBeInTheDocument();
-        expect(mockAxios).not.toHaveBeenCalled();
+        expect(mockAxios.post).not.toHaveBeenCalled();
+    });
+
+    it('will submit form if it is fully filled out', async () => {
+        const fakePostData = fakePost();
+
+        mockAxios.post.mockResolvedValue();
+        
+        render(
+            <Provider store={store}>
+                <PostForm {...fakeData} />
+            </Provider>
+        );
+
+        await wait(() => fireEvent.change(screen.getByLabelText(/title/i), {
+            target: {
+                value: fakePostData.title,
+            }
+        }));
+        await wait(() => fireEvent.change(screen.getByLabelText(/body/i), {
+            target: {
+                value: fakePostData.body,
+            }
+        }));
+        expect(screen.queryByText(/required/i)).not.toBeInTheDocument();
+        expect(screen.getByText(/save/i)).not.toBeDisabled();
+        
+        await wait(() => fireEvent.click(screen.getByText(/save/i)));
+        expect(mockAxios.post).toHaveBeenCalledTimes(1);
     });
 });
