@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostForm /> renders and matches the snapshot 1`] = `
+<form
+  action="#"
+  class="sc-AxirZ cHkTwW"
+>
+  <h2
+    class="sc-AxiKw gvpAQo"
+  >
+    Add post
+  </h2>
+  <div
+    class="sc-AxhCb WMzQB"
+  >
+    <label
+      class="sc-AxhUy glMlo"
+      for="title"
+    >
+      Title
+    </label>
+    <input
+      class="sc-fzozJi keCNm"
+      id="title"
+      name="title"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-AxhCb WMzQB"
+  >
+    <label
+      class="sc-AxhUy glMlo"
+      for="body"
+    >
+      Body
+    </label>
+    <textarea
+      class="sc-AxgMl khZarX"
+      id="body"
+      name="body"
+      rows="6"
+    />
+  </div>
+  <div
+    class="sc-AxheI ecSaBX"
+  >
+    <button
+      class="sc-AxjAm sc-Axmtr debgrO"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="sc-AxjAm clzjYv"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;
