@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CommentForm /> renders and matches the snapshot 1`] = `
+<form
+  action="#"
+  class="sc-AxirZ cHkTwW"
+>
+  <h2
+    class="sc-AxiKw gvpAQo"
+  >
+    Add comment
+  </h2>
+  <div
+    class="sc-AxhCb WMzQB"
+  >
+    <label
+      class="sc-AxhUy glMlo"
+      for="name"
+    >
+      Name
+    </label>
+    <input
+      class="sc-fzozJi lkIOAO"
+      id="name"
+      name="name"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-AxhCb WMzQB"
+  >
+    <label
+      class="sc-AxhUy glMlo"
+      for="email"
+    >
+      Email
+    </label>
+    <input
+      class="sc-fzozJi lkIOAO"
+      id="email"
+      name="email"
+      type="email"
+      value=""
+    />
+  </div>
+  <div
+    class="sc-AxhCb WMzQB"
+  >
+    <label
+      class="sc-AxhUy glMlo"
+      for="body"
+    >
+      Body
+    </label>
+    <textarea
+      class="sc-AxgMl khZarX"
+      id="body"
+      name="body"
+      rows="6"
+    />
+  </div>
+  <div
+    class="sc-AxheI ecSaBX"
+  >
+    <button
+      class="sc-AxjAm sc-Axmtr debgrO"
+      type="button"
+    >
+      Cancel
+    </button>
+    <button
+      class="sc-AxjAm clzjYv"
+      type="submit"
+    >
+      Save
+    </button>
+  </div>
+</form>
+`;
