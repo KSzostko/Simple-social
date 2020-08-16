@@ -46,6 +46,7 @@ function UserDetails(props) {
                         <StyledIcon
                             className="fa fa-arrow-left"
                             aria-hidden="true"
+                            data-testid="back-button"
                         ></StyledIcon>
                     </Link>
                     <h2>{name}</h2>

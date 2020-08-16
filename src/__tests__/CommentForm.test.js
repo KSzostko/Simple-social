@@ -70,7 +70,7 @@ describe('<CommentForm />', () => {
     });
 
     it('will submit form if it is fully filled out', async () => {
-        const fakePostData = fakeComment();
+        const fakeCommentData = fakeComment();
 
         mockAxios.post.mockResolvedValue();
         
@@ -82,17 +82,17 @@ describe('<CommentForm />', () => {
 
         await wait(() => fireEvent.change(screen.getByLabelText(/name/i), {
             target: {
-                value: fakePostData.name,
+                value: fakeCommentData.name,
             }
         }));
         await wait(() => fireEvent.change(screen.getByLabelText(/body/i), {
             target: {
-                value: fakePostData.body,
+                value: fakeCommentData.body,
             }
         }));
         await wait(() => fireEvent.change(screen.getByLabelText(/email/i), {
             target: {
-                value: fakePostData.email,
+                value: fakeCommentData.email,
             }
         }));
         expect(screen.queryByText(/required/i)).not.toBeInTheDocument();

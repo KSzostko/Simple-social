@@ -50,7 +50,8 @@ function PostItem({ data, deletePostFn }) {
                     }}>
                         <StyledIcon
                             className="fa fa-chevron-right"
-                            aria-hidden="true"></StyledIcon>
+                            aria-hidden="true"
+                            data-testid="arrow-button"></StyledIcon>
                     </Link>
                 </StyledListItem>
             )}
